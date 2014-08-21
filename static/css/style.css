@@ -1,0 +1,13 @@
+ body{
+     background-color:deepskyblue;
+ }
+.main{
+     width: 100%;
+     margin: auto 0 auto 0;
+     text-align: center;
+ }
+#logo{
+    width: 400px;
+    margin: auto 0 auto 0;
+    height: 200px;
+}

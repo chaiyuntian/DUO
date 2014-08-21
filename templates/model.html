@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../static/js/BCF.js"></script>
+    <script src="../static/js/style.js"></script>
+</head>
+<body>
+<canvas data-bcf>
+    <task onload="|qstyle.ontaskstrat|">
+        <controls>
+          <panel location="0,0,1280,720" name="p1">
+                <controls>
+                   <img name="logo" url="imgs/logo.jpg" location="430,200,400,200">
+                    <button name="btnStart" text="开始答题" location="500,500,200,100" class="|qstyle.style.bold|" >
+                        <function onclick="|qstyle.action.qa|"></function>
+                    </button>
+                    <article name="des" visibility="0" class="|qstyle.style.bold|" location="200,200,850,400" text="|qstyle.des|"></article>
+                </controls>
+            </panel>
+            <panel location="-1350,720,1280,720" name="p2" z="3">
+                <controls>
+                    <label text="您定制的用途是(点击图片)" w="1280" y="100" align="center" class="|qstyle.style.bold|" ></label>
+                    <panel location="200,150,1000,500">
+                        <controls>
+                            <foreach in="|labels.qa|">
+                                <label class="|qstyle.style.bold|" y="400" x="{$i*320+100}" text="||"></label>
+                                <img url="{'imgs/qa'+($i+1)+'.jpg'}" data="||" class="|qstyle.style.img|" x="{$i*320}">
+                            </foreach>
+                        </controls>
+                    </panel>
+                    <button text="请选择用途" name="confirm" location="600,600,100,50" enable="false">
+                        <function onclick="|qstyle.action.qb|"></function>
+                    </button>
+                </controls>
+            </panel>
+            <panel location="0,0,1280,720" name="p3" visibility="0">
+                <controls>
+                    <label text="请告诉我们这几个小秘密：" w="1280" y="20" align="center" class="|qstyle.style.bold|" ></label>
+                    <foreach in="|labels.qb|">
+                        <label y="{80+$i*90}"  class="|qstyle.style.title|" text="{$i+1+'. '+$model}"></label>
+                        <textbox y="{120+$i*90}" class="|qstyle.style.input|" data="||"></textbox>
+                    </foreach>
+                    <button location="950,630,150,50" text="继续>" font="25px 黑体" >
+                        <function onclick="|qstyle.action.qc|"></function>
+                    </button>
+                </controls>
+            </panel>
+            <panel location="0,0,1280,720" name="p4" visibility="0">
+                <controls>
+                    <label text="你喜欢的定制风格是" w="1280" y="20" align="center" class="|qstyle.style.bold|" ></label>
+                    <img name="detail" location="100,60,500,500">
+                    <button name="confirm" location="500,600,100,50" text="请选择风格" enable="false">
+                        <function onclick="|qstyle.action.end|"></function>
+                    </button>
+                    <panel location="640,60,640,620">
+                        <controls>
+                            <foreach in="|labels.qc|" >
+                                <label text="||" class="|qstyle.style.title|" x="50" y="{$i*210+40}"></label>
+                                <img url="{'imgs/qc'+($i+1)+'.jpg'}" y="{$i*200}" class="|qstyle.style.styImg|" data="||">
+                            </foreach>
+                        </controls>
+                    </panel>
+                </controls>
+            </panel>
+        </controls>
+    </task>
+</canvas>
+
+</body>
+</html>
